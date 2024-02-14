@@ -1,6 +1,6 @@
-# Tennis Kata in Javasxript + Jest
+# Tennis Kata in Javascript + Jest
 
-Javasxript + Jest Starter for coding tennis kata.
+Javascript + Jest Starter for coding tennis kata.
 
 ## Getting Started
 
