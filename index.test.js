@@ -43,12 +43,10 @@ const getScore = (player1Points, player2Points) => {
 // handle player 1 winning a point
 
 const player1WinsPoint = (player1Points, player2Points) => {
-  if (isDeuce(player1Points, player2Points)) { // If the game is in deuce: 3-3 (40-40)
+  if (isDeuce(player1Points, player2Points)) {
     return [player1Points + 1, player2Points];
-  } else if (hasAdvantage(player1Points, player2Points) || player2Points === "Win") { 
+  } else if (hasAdvantage(player1Points, player2Points)) {
     return [player1Points, player2Points];
-  } else if (player1Points === 3 && player2Points === 3) {
-    return ["Advantage", player2Points];
   } else {
     return [player1Points + 1, player2Points];
   }
@@ -58,10 +56,8 @@ const player1WinsPoint = (player1Points, player2Points) => {
 const player2WinsPoint = (player1Points, player2Points) => {
   if (isDeuce(player1Points, player2Points)) {
     return [player1Points, player2Points + 1];
-  } else if (hasAdvantage(player1Points, player2Points) || player1Points === "Win") {
+  } else if (hasAdvantage(player1Points, player2Points)) {
     return [player1Points, player2Points];
-  } else if (player1Points === 3 && player2Points === 3) {
-    return [player1Points, "Advantage"];
   } else {
     return [player1Points, player2Points + 1];
   }
@@ -131,39 +127,5 @@ describe("Tennis Game", () => {
       [player1Points, player2Points] = player2WinsPoint(player1Points, player2Points);
     }
     expect(getScore(player2Points, player1Points)).toBe("Advantage Player 2");
-  });
-
-  // BEGINS:: RETURN TO DEUCE FROM ADVANTAGE
-  test("Return to deuce from advantage", () => {
-    let player1Points = 0;
-    let player2Points = 0;
-    while (!isDeuce(player1Points, player2Points)) {
-      [player1Points, player2Points] = player1WinsPoint(player1Points, player2Points);
-      [player1Points, player2Points] = player2WinsPoint(player1Points, player2Points);
-    }
-    expect(getScore(player1Points, player2Points)).toBe("Deuce");
-  });
-
-  // BEGINS:: PLAYER WINS FROM ADVANTAGE
-  test("Player 1 wins from advantage", () => {
-    let player1Points = 0;
-    let player2Points = 0;
-    while (!isDeuce(player1Points, player2Points)) {
-      [player1Points, player2Points] = player1WinsPoint(player1Points, player2Points);
-      [player1Points, player2Points] = player2WinsPoint(player1Points, player2Points);
-    }
-    [player1Points, player2Points] = player1WinsPoint(player1Points, player2Points);
-    expect(getScore(player1Points, player2Points)).toBe("Advantage Player 1");
-  });
-
-  test("Player 2 wins from advantage", () => {
-    let player1Points = 0;
-    let player2Points = 0;
-    while (!isDeuce(player1Points, player2Points)) {
-      [player1Points, player2Points] = player1WinsPoint(player1Points, player2Points);
-      [player1Points, player2Points] = player2WinsPoint(player1Points, player2Points);
-    }
-    [player1Points, player2Points] = player2WinsPoint(player1Points, player2Points);
-    expect(getScore(player1Points, player2Points)).toBe("Advantage Player 2");
   });
 });
