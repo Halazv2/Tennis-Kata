@@ -1,22 +1,42 @@
 # Tennis Kata in Javascript + Jest
 
-Javascript + Jest Starter for coding tennis kata.
+This script allows you to run a Tennis Game test by providing the names of two players.
 
 ## Getting Started
 
-### Install dependencies
+### Prerequisites
 
-```shell
+Ensure that you have Node.js installed on your machine. If not, you can download it from [here](https://nodejs.org/en/download/).
+
+## How to Use
+
+1. Clone this repository to your local machine.
+
+```bash
+git clone https://github.com/Halazv2/Tennis-Kata.git
+```
+
+2. Navigate to the directory containing the `script.js` file in your terminal then Install dependencies by running the following command in your terminal:
+
+```bash
+cd Tennis-Kata
 npm install
 ```
 
-### Running tests
+3. Run the script using Node.js by typing the following command:
 
-```shell
-npm run test
+```bash
+node script.js
 ```
+4. The script will prompt you to enter the names of two players. After entering each name, press Enter.
 
-## The Tennis Kata
+```bash
+Enter player one name: Player1
+Enter player two name: Player2
+```
+5. After entering the names, the script will automatically run the Tennis Game test with the provided player names.
+
+## The Tennis Kata Rules
 
 You can read more about Tennis scores [at wikipedia](http://en.wikipedia.org/wiki/Tennis#Scoring) which is summarized below:
 
